@@ -1,0 +1,51 @@
+---
+title: "vegan"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(vegan)
+library(tidyverse)
+data("dune")
+data("dune.env")
+data("dune.taxon")
+mod0 <- rda(dune ~ 1, dune.env)
+mod1 <- rda(dune ~ ., dune.env)
+
+
+```
+
+## Paquet Vegan
+
+Aquet document son proves amb el pack Vegan per tractar dades ecologiques de comunitats i representar-les graficament. Per mes informació vegeu el link següent:  <https://github.com/vegandevs/vegan/>.
+
+Amb aquet paquet es pot generar grafics on es veuen les relacions de variables medioambientals i les comunitats d especies.
+En aquet cas particular es fara pel conjunt de dades dune que es el nombre total de cada una de les especies que es troben en 25 punts mostrejats.
+
+En el cas de dune.env es la matriu associada de variables ambientals als 25 punts mostrejats....
+
+Es mes
+
+```{r dune}
+summary(dune)
+
+summary(dune.env)
+```
+
+## Grafics generats
+
+Aquet son uns quants exe,ples de grafics generats amb Vegan:
+
+Aquet primer seria un grafic PCA sense restriccions
+
+```{r mod0, echo=FALSE}
+plot(mod0)
+```
+
+Aquet seria un grafic de model complet amb totes les variables ambientals
+```{r mod1, echo=FALSE}
+plot(mod1)
+```
+
+a continuacio s inclou una app shiny.
